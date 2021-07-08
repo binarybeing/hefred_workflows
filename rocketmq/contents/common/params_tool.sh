@@ -5,7 +5,7 @@ inputstring_length=${#inputstring}
 let param_part_start=-1
 output_string=""
 param_string=""
-while (( index <= 100 ))
+while (( index <= $inputstring_length ))
 do
 
   the_char=${inputstring: index: 1}
@@ -33,8 +33,7 @@ do
   fi
 
 done
-
-params_output=`sh ./pashua.sh $param_string`
+params_output=`sh ./common/pashua.sh $param_string`
 params_result_arr=($params_output)
 
 for param in ${params_result_arr[@]}

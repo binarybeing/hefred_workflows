@@ -19,6 +19,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>55764FD0-18D3-4D8B-B530-865B363B1A38</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>69465FD8-7BDA-45EF-9A68-5907C948013B</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>748D97CB-1F2D-4AD0-BF4B-87C489FC9E44</key>
 		<array>
 			<dict>
@@ -58,6 +71,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>CA102427-5679-4ED8-9EA8-5CC38392EE4D</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>55764FD0-18D3-4D8B-B530-865B363B1A38</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 	</dict>
 	<key>createdby</key>
 	<string>binarybeing</string>
@@ -69,6 +95,81 @@
 	<string>RocketMQ</string>
 	<key>objects</key>
 	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>fixedorder</key>
+				<false/>
+				<key>items</key>
+				<string>[{"title":"MqAdmin","arg":"admin","subtitle":"admin"}]</string>
+				<key>keyword</key>
+				<string>rmq</string>
+				<key>runningsubtext</key>
+				<string></string>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string></string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.listfilter</string>
+			<key>uid</key>
+			<string>08932C20-849A-4E1F-BF1D-1A0883937EE6</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>autopaste</key>
+				<true/>
+				<key>clipboardtext</key>
+				<string>{query}</string>
+				<key>ignoredynamicplaceholders</key>
+				<false/>
+				<key>transient</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.clipboard</string>
+			<key>uid</key>
+			<string>69465FD8-7BDA-45EF-9A68-5907C948013B</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>query=$1
+cmd="echo $""$query"
+cmd=`eval $cmd`
+result=`sh ./common/params_tool.sh $cmd`
+echo -n $result</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>55764FD0-18D3-4D8B-B530-865B363B1A38</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
@@ -99,27 +200,19 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string>query=$1
-
-echo -n $query</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
+				<key>argument</key>
 				<string></string>
-				<key>type</key>
-				<integer>0</integer>
+				<key>passthroughargument</key>
+				<false/>
+				<key>variables</key>
+				<dict/>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.action.script</string>
+			<string>alfred.workflow.utility.argument</string>
 			<key>uid</key>
-			<string>04769C18-29EE-4582-86C6-7DFABEDAE4D9</string>
+			<string>748D97CB-1F2D-4AD0-BF4B-87C489FC9E44</string>
 			<key>version</key>
-			<integer>2</integer>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -131,9 +224,7 @@ echo -n $query</string>
 				<key>variables</key>
 				<dict>
 					<key>updateTopic</key>
-					<string>sh mqadmin updateTopic –n 10.45.47.168:9876 –c DefaultCluster –t ZTEExample
-
-</string>
+					<string>sh mqadmin updateTopic –n @updateTopicNameserver_10.45.47.168:9876@  –c @rocketMQ集群_DefaultCluster@ –t @topic_xxxtopic@</string>
 				</dict>
 			</dict>
 			<key>type</key>
@@ -162,98 +253,70 @@ echo -n $query</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argument</key>
-				<string></string>
-				<key>passthroughargument</key>
-				<false/>
-				<key>variables</key>
-				<dict/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.argument</string>
-			<key>uid</key>
-			<string>748D97CB-1F2D-4AD0-BF4B-87C489FC9E44</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argumenttrimmode</key>
-				<integer>0</integer>
-				<key>argumenttype</key>
-				<integer>2</integer>
-				<key>fixedorder</key>
-				<false/>
-				<key>items</key>
-				<string>[{"title":"MqAdmin","arg":"admin","subtitle":"admin"}]</string>
-				<key>keyword</key>
-				<string>rmq</string>
-				<key>runningsubtext</key>
-				<string></string>
-				<key>subtext</key>
-				<string></string>
-				<key>title</key>
-				<string></string>
-				<key>withspace</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.listfilter</string>
-			<key>uid</key>
-			<string>08932C20-849A-4E1F-BF1D-1A0883937EE6</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
 	</array>
 	<key>readme</key>
 	<string></string>
 	<key>uidata</key>
 	<dict>
-		<key>04769C18-29EE-4582-86C6-7DFABEDAE4D9</key>
-		<dict>
-			<key>xpos</key>
-			<integer>1265</integer>
-			<key>ypos</key>
-			<integer>3225</integer>
-		</dict>
 		<key>08932C20-849A-4E1F-BF1D-1A0883937EE6</key>
 		<dict>
 			<key>xpos</key>
-			<integer>575</integer>
+			<integer>305</integer>
 			<key>ypos</key>
-			<integer>3330</integer>
+			<integer>2835</integer>
+		</dict>
+		<key>55764FD0-18D3-4D8B-B530-865B363B1A38</key>
+		<dict>
+			<key>note</key>
+			<string>获取命令配置
+执行对话框替换
+输出</string>
+			<key>xpos</key>
+			<integer>960</integer>
+			<key>ypos</key>
+			<integer>2835</integer>
+		</dict>
+		<key>69465FD8-7BDA-45EF-9A68-5907C948013B</key>
+		<dict>
+			<key>xpos</key>
+			<integer>1155</integer>
+			<key>ypos</key>
+			<integer>2835</integer>
 		</dict>
 		<key>748D97CB-1F2D-4AD0-BF4B-87C489FC9E44</key>
 		<dict>
 			<key>xpos</key>
-			<integer>830</integer>
+			<integer>550</integer>
 			<key>ypos</key>
-			<integer>3245</integer>
+			<integer>2865</integer>
 		</dict>
 		<key>A204C66A-88ED-42E1-A089-11341427D6CF</key>
 		<dict>
 			<key>xpos</key>
-			<integer>780</integer>
+			<integer>485</integer>
 			<key>ypos</key>
-			<integer>3245</integer>
+			<integer>2865</integer>
 		</dict>
 		<key>BB0E6991-16A1-4D2C-BCB6-6981A6E5B576</key>
 		<dict>
+			<key>colorindex</key>
+			<integer>8</integer>
+			<key>note</key>
+			<string>mqAdmin</string>
 			<key>xpos</key>
-			<integer>895</integer>
+			<integer>630</integer>
 			<key>ypos</key>
-			<integer>3215</integer>
+			<integer>2835</integer>
 		</dict>
 		<key>CA102427-5679-4ED8-9EA8-5CC38392EE4D</key>
 		<dict>
+			<key>note</key>
+			<string>参数配置（指令配置）
+配置中 @参数名称_参数默认值@ 会被对话框输入值替换</string>
 			<key>xpos</key>
-			<integer>1065</integer>
+			<integer>830</integer>
 			<key>ypos</key>
-			<integer>3245</integer>
+			<integer>2865</integer>
 		</dict>
 	</dict>
 	<key>webaddress</key>
